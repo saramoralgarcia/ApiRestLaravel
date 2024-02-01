@@ -1,0 +1,396 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Api Registro de Clientes. Proyecto Sara Moral",
+        "description": "Esta API se encarga de manejar la información de la base de datos de clientes.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/api/Clientes": {
+            "get": {
+                "tags": [
+                    "Cliente"
+                ],
+                "summary": "Listado de todos Todos los registros de la base de datos clientes.",
+                "operationId": "7a358c51857fc236306148166f8c9599",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "nombre": {
+                                                        "type": "string",
+                                                        "example": "Sara"
+                                                    },
+                                                    "correo": {
+                                                        "type": "string",
+                                                        "example": "sara@gmail.com"
+                                                    },
+                                                    "telefono": {
+                                                        "type": "string",
+                                                        "example": "666666666"
+                                                    },
+                                                    "direccion": {
+                                                        "type": "string",
+                                                        "example": "Ventas"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cliente"
+                ],
+                "summary": "Registrar un Cliente",
+                "operationId": "3aabc831b6ef0a19a0eb79bb42f77780",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "nombre": {
+                                                "type": "string"
+                                            },
+                                            "correo": {
+                                                "type": "string"
+                                            },
+                                            "telefono": {
+                                                "type": "string"
+                                            },
+                                            "direccion": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "nombre": "",
+                                    "correo": "",
+                                    "telefono": "",
+                                    "direccion": ""
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "nombre": {
+                                            "type": "string",
+                                            "example": "Albert Gómez"
+                                        },
+                                        "correo": {
+                                            "type": "string",
+                                            "example": "albert@gmail.com"
+                                        },
+                                        "telefono": {
+                                            "type": "string",
+                                            "example": "987456321"
+                                        },
+                                        "direccion": {
+                                            "type": "string",
+                                            "example": "Madrid"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The nombre field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/Clientes/{id}": {
+            "get": {
+                "tags": [
+                    "Cliente"
+                ],
+                "summary": "Mostrar la información de un cliente",
+                "operationId": "902dea560a3f24f8daea827cafa84bfe",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 2
+                                        },
+                                        "nombres": {
+                                            "type": "string",
+                                            "example": "Sara García"
+                                        },
+                                        "correo": {
+                                            "type": "string",
+                                            "example": "sara@gmail.com"
+                                        },
+                                        "telefono": {
+                                            "type": "string",
+                                            "example": "123456789"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NO SE ENCUENTRA EL REGISTRO",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Cliente] #id"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Cliente"
+                ],
+                "summary": "Actualizar un Cliente",
+                "operationId": "9dfbbeb5220e4d4b140b063137859659",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "correo": {
+                                        "type": "string"
+                                    },
+                                    "telefono": {
+                                        "type": "string"
+                                    },
+                                    "direccion": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "example": {
+                                "nombre": "",
+                                "correo": "",
+                                "telefono": "",
+                                "direccion": ""
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "nombre": {
+                                            "type": "string",
+                                            "example": "pepe"
+                                        },
+                                        "correo": {
+                                            "type": "string",
+                                            "example": "pepe@gmail.es"
+                                        },
+                                        "telefono": {
+                                            "type": "string",
+                                            "example": "654789321"
+                                        },
+                                        "direccion": {
+                                            "type": "string",
+                                            "example": "Los Palacios"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The correo field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cliente"
+                ],
+                "summary": "Eliminar un cliente",
+                "operationId": "8c3738af64f96a776cd6fe0d5c91975a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    },
+                    "404": {
+                        "description": "no encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se pudo realizar correctamente la operación"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
